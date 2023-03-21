@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+:root {
+  --cell-size: 100px;
+  --mark-size: calc(var(--cell-size) * 0.5);
+  --bg-color: #172a31;
+  --sq-color: #1b363f;
+  --cross-color: #06bdc2;
+  --circle-color: #e8b557;
+}
+
+body,
+html {
+  margin: 0;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--bg-color);
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 15px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.turn,
+.restart {
+  height: 35px;
+  width: 35px;
+  padding: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background-color: #a6bfcb;
+  border-style: none;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.turn {
+  height: 35px;
+  width: fit-content;
+  background-color: var(--sq-color);
+}
+
+
+.squares {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--cell-size);
+  width: var(--cell-size);
+  cursor: pointer;
+  background-color: var(--sq-color);
+  border-style: none;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+.restart:hover,
+.restart:active,
+.squares:hover,
+.squares:active {
+  scale: 0.97;
+  cursor: pointer;
+}
+
+.cross::before,
+.cross::after {
+  content: '';
+  position: absolute;
+  height: var(--mark-size);
+  width: calc(var(--mark-size) * 0.25);
+  background-color: var(--cross-color);
+}
+
+.cross::before {
+  transform: rotate(45deg);
+}
+
+.cross::after {
+ transform: rotate(315deg);
+}
+
+.circle::before,
+.circle::after {
+  content: '';
+  position: absolute;
+  position: absolute;
+  background-color: var(--circle-color);
+  border-radius: 50%;
+}
+
+.circle::before {
+  height: var(--mark-size);
+  width: var(--mark-size);
+}
+
+.circle::after {
+ height: calc(var(--mark-size) * 0.55);
+ width: calc(var(--mark-size) * 0.55);
+ background-color: var(--sq-color);
+}
+
+.results {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.results-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: var(--cell-size);
+  height: calc(var(--cell-size) * 0.5);
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.player {
+  background-color: #00c5bc;
+}
+
+.tie {
+  background-color: #a7bfc9;
+}
+.cpu {
+  background-color: #f5af4d;
+}
+
+.results-box p {
+  margin: 0;
+}
+
+
+
+.results-box p:last-child {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
