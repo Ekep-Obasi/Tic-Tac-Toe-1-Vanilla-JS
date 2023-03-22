@@ -156,3 +156,72 @@ header {
   font-size: 1.5rem;
   font-weight: bold;
 }
+
+.winstate {
+  display: flex;
+  top: 0;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-color: #000000a3;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.winstate-msg {
+  background-color: var(--bg-color);
+  padding: 2rem 0;
+  width: 100%;
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  scale: 0.8;
+  transition: scale 0.5s ease-in-out;
+}
+
+.fullscreen {
+  scale: 1;
+  display: flex;
+  opacity: 1;
+}
+
+.winstate-msg h1,
+.winstate-msg p {
+  margin: 0;
+}
+
+.winstate p {
+  color: #fff;
+}
+
+.winstate h1 {
+  color: #00c5bc;
+}
+
+.button-container {
+  display: flex;
+  gap: 35px;
+  padding: 12px;
+}
+
+.quit,
+.next-round {
+  scale: 1.1;
+  cursor: pointer;
+  border-style: none;
+  border-radius: 8px;
+  padding: 0.5rem 0.25rem;
+  box-shadow:  rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.quit {
+  background-color: #a7bfc9;
+}
+
+.next-round {
+  background-color: #f5af4d;
+}
