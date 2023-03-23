@@ -8,6 +8,7 @@
 :root {
   --cell-size: 100px;
   --mark-size: calc(var(--cell-size) * 0.5);
+  --design-mark: calc(var(--cell-size) * 0.3);
   --bg-color: #172a31;
   --sq-color: #1b363f;
   --cross-color: #06bdc2;
@@ -23,7 +24,7 @@ html {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   background-color: var(--bg-color);
 }
 
@@ -38,13 +39,19 @@ header {
   align-items: center;
   justify-content: space-between;
   width: 330px;
+  padding: 1rem 0;
+}
+
+.marks {
+  display: flex;
+  gap: 15px;
 }
 
 .turn,
 .restart {
   height: 35px;
   width: 35px;
-  padding: 2px;
+  padding: 7px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,11 +62,27 @@ header {
 }
 
 .turn {
+  font-size: 14px;
+  font-weight: bold;
+  color: #06bdc2;
   height: 35px;
   width: fit-content;
   background-color: var(--sq-color);
 }
 
+.audioControl {
+  background-color: #f5af4d;
+  border-style: none;
+  border-radius: 50%;
+  height: 35px;
+  width: 35px;
+  margin: 0 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  align-self: flex-end;
+}
 
 .squares {
   display: flex;
@@ -75,9 +98,9 @@ header {
 }
 
 .restart:hover,
-.restart:active,
-.squares:hover,
-.squares:active {
+.restart:not(.cross):not(.circle):active,
+.squares:not(.cross):not(.circle):hover,
+.squares:not(.cross):not(.circle):active {
   scale: 0.97;
   cursor: pointer;
 }
@@ -183,8 +206,8 @@ header {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  scale: 0.8;
-  transition: scale 0.5s ease-in-out;
+  scale: 0.3;
+  transition: scale 1s ease-in-out;
 }
 
 .fullscreen {
@@ -228,4 +251,165 @@ header {
 
 .next-round {
   background-color: #f5af4d;
+}
+
+.cross-mark,
+.circle-mark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cross-mark::before,
+.cross-mark::after {
+  content: '';
+  position: absolute;
+  height: var(--design-mark);
+  width: calc(var(--design-mark) * 0.25);
+  background-color: var(--cross-color);
+}
+
+.cross-mark::before {
+  transform: rotate(45deg);
+}
+
+.cross-mark::after {
+ transform: rotate(315deg);
+}
+
+.circle-mark::before,
+.circle-mark::after {
+  content: '';
+  position: absolute;
+  background-color: var(--circle-color);
+  border-radius: 50%;
+}
+
+.circle-mark::before {
+  height: var(--design-mark);
+  width: var(--design-mark);
+  position: relative;
+}
+
+.circle-mark::after {
+  height: calc(var(--design-mark) * 0.55);
+ width: calc(var(--design-mark) * 0.55);
+ background-color: var(--sq-color);
+}
+
+.welcome {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-color);
+}
+
+.start {
+  display: none;
+}
+
+.choice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  justify-content: center;
+}
+
+.choose-player h2 {
+  color: var(--cross-color);
+  font-size: 14px;
+}
+
+.startButtonContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.choose-player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--sq-color);
+  height: 150px;
+  width: 100%;
+  max-width: 250px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  border-radius: 8px;
+}
+
+.vscpu,
+.vsplayer {
+  min-width: 250px;
+  border-style: none;
+  padding: 0.75rem 1rem;
+  font-weight: bold;
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  cursor: pointer;
+}
+
+.toggleContainer {
+  width: 85%;
+  border-style: none;
+  margin: 0 auto;
+  background-color: var(--bg-color);
+  height: 45px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.reminder {
+  color: #a7bfc9;
+  font-size: 12px;
+}
+
+.vscpu {
+  background-color: var(--circle-color);
+}
+
+.vsplayer {
+  background-color: var(--cross-color);
+}
+
+.x,
+.o {
+  height: 100%;
+  width: 45%;
+  border-radius: 8px;
+  border-style: none;
+  position: absolute;
+}
+
+.o {
+  right: 0;
+  background-color: #06bdc2;
+}
+
+.o .circle-mark::after {
+  background-color: #06bdc2;
+}
+
+.o .circle-mark::before {
+  background-color: #172a31;
+}
+
+.x {
+  left: 0;
+}
+
+.x {
+  background-color: #172a31;
+}
+
+.x.circle-mark::after,
+.x.circle-mark::before {
+  z-index: 2;
 }

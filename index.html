@@ -15,8 +15,18 @@
     <title>Tic-tac-toe</title>
   </head>
   <body>
+    <audio id="audio" autoplay>
+      <source src="assets/audio/audio.mp3" type="audio/mpeg" />
+    </audio>
+    <button class="audioControl">
+      <i class="fa fa-volume-up" aria-hidden="true"></i>
+    </button>
     <header>
-      <div class="turn">TURN X</div>
+      <div class="marks">
+        <div class="circle-mark"></div>
+        <div class="cross-mark"></div>
+      </div>
+      <div class="turn">X TURN</div>
       <button class="restart">
         <i class="fa-sharp fa-solid fa-rotate-right"></i>
       </button>
@@ -44,6 +54,33 @@
       <div class="cpu results-box">
         <p>O(CPU)</p>
         <p>0</p>
+      </div>
+    </div>
+    <p class="verdict"></p>
+    <div class="welcome">
+      <div class="choice">
+        <div class="marks">
+          <div class="circle-mark"></div>
+          <div class="cross-mark"></div>
+        </div>
+        <div class="choose-player">
+          <h2>PICK PLAYER 1's MARK</h2>
+          <div class="toggleContainer">
+            <button class="o" type="button">
+              <div class="circle-mark"></div>
+            </button>
+            <button class="x" type="button">
+              <div class="cross-mark"></div>
+            </button>
+          </div>
+          <p class="reminder">REMEMBER: X goes first</p>
+        </div>
+        <div class="startButtonContainer">
+          <button type="button" id="startButton" class="vscpu">
+            NEW GAME (VS CPU)
+          </button>
+          <button type="button" class="vsplayer">NEW GAME (VS PLAYER)</button>
+        </div>
       </div>
     </div>
     <div class="winstate">
