@@ -1,12 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <title>Tic-tac-toe</title>
+  </head>
+  <body>
+    <audio id="audio" autoplay>
+      <source src="assets/audio/audio.mp3" type="audio/mpeg" />
+    </audio>
+    <button class="audioControl">
+      <i class="fa fa-volume-up" aria-hidden="true"></i>
+    </button>
+    <header>
+      <div class="marks">
+        <div class="circle-mark"></div>
+        <div class="cross-mark"></div>
+      </div>
+      <div class="turn">X TURN</div>
+      <button class="restart">
+        <i class="fa-sharp fa-solid fa-rotate-right"></i>
+      </button>
+    </header>
+    <div class="board">
+      <button class="squares" id="boxes"></button>
+      <button class="squares" id="boxes"></button>
+      <button class="squares" id="boxes"></button>
+      <button class="squares" id="boxes"></button>
+      <button class="squares" id="boxes"></button>
+      <button class="squares" id="boxes"></button>
+      <button class="squares" id="boxes"></button>
+      <button class="squares" id="boxes"></button>
+      <button class="squares" id="boxes"></button>
+    </div>
+    <div class="results">
+      <div class="player results-box">
+        <p>X(YOU)</p>
+        <p>0</p>
+      </div>
+      <div class="tie results-box">
+        <p>TIES</p>
+        <p>0</p>
+      </div>
+      <div class="cpu results-box">
+        <p>O(CPU)</p>
+        <p>0</p>
+      </div>
+    </div>
+    <p class="verdict"></p>
+    <div class="welcome">
+      <div class="choice">
+        <div class="marks">
+          <div class="circle-mark"></div>
+          <div class="cross-mark"></div>
+        </div>
+        <div class="choose-player">
+          <h2>PICK PLAYER 1's MARK</h2>
+          <div class="toggleContainer">
+            <button class="o" type="button">
+              <div class="circle-mark"></div>
+            </button>
+            <button class="x" type="button">
+              <div class="cross-mark"></div>
+            </button>
+          </div>
+          <p class="reminder">REMEMBER: X goes first</p>
+        </div>
+        <div class="startButtonContainer">
+          <button type="button" id="startButton" class="vscpu">
+            NEW GAME (VS CPU)
+          </button>
+          <button type="button" class="vsplayer">NEW GAME (VS PLAYER)</button>
+        </div>
+      </div>
+    </div>
+    <div class="winstate">
+      <div class="winstate-msg" id="msg">
+        <p>YOU WON!</p>
+        <h1>X takes the round</h1>
+        <div class="button-container">
+          <button type="button" class="quit">QUIT</button>
+          <button type="button" class="next-round">NEXT ROUND</button>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
 </html>
