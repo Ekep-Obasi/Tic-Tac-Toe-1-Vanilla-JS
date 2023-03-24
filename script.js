@@ -4,6 +4,7 @@ const winState = document.querySelector(".winstate");
 const winStateMsg = document.getElementById("msg");
 const refreshButtonElement = document.querySelector(".restart");
 const startButtonElement = document.getElementById("startButton");
+const winner = document.querySelector(".winner");
 
 const winningArray = [
   [0, 1, 2],
@@ -28,11 +29,8 @@ const cpuMoves = [];
 squareElement.forEach((square, idx) => {
   square.addEventListener("click", () => {
     handleUserAction(square, idx);
-    if (userMoves.length === 3) {
-      userMoves.splice(0, userMoves.length).push(idx);
-    }
-    finalVerdict(userMoves);
     userMoves.push(idx);
+    finalVerdict(userMoves, "O");
     console.log("userMoves:", userMoves);
   });
 });
@@ -41,7 +39,7 @@ function handleUserAction(square, position) {
   getPosition(position);
   updateBoard(position, square);
 }
-
+3;
 function getPosition(idx) {
   return [Math.floor(idx / 3), idx % 3];
 }
@@ -67,20 +65,20 @@ function getRandomPosition() {
           .reduce((a, b) => a + b, 0)
       )
       .reduce((a, b) => a + b, 0);
-    console.log("total Arr", totalMovesArr);
+    if (totalMovesArr > 7) {
+      finalVerdict([0, 1, 2], "No one");
+      endGame();
+    }
+  } else {
+    markRandomPosition(row, col);
   }
-
-  markRandomPosition(row, col);
   return;
 }
 
 function markRandomPosition(row, column) {
   const position = row * 3 + column;
-  if (cpuMoves.length === 3) {
-    finalVerdict(cpuMoves);
-    cpuMoves.splice(0, cpuMoves.length).push(position);
-  }
   cpuMoves.push(position);
+  finalVerdict(cpuMoves, "X");
   console.log("cpuMoves:", cpuMoves);
 
   board[row][column] = 1;
@@ -90,18 +88,19 @@ function markRandomPosition(row, column) {
   }, 500);
 }
 
-function finalVerdict(moves) {
-  const result = winningArray.filter(
-    (arr) => JSON.stringify(arr) === JSON.stringify(moves)
-  );
-  console.log(result);
-  if (result.length !== 0) {
-    document.querySelector(".verdict").innerHTML = "Game Over!";
-    endGame();
-  }
+function finalVerdict(moves, winningPlayer) {
+  winningArray.forEach((wincondition) => {
+    const decision = wincondition.every((el) => moves.includes(el));
+    if (decision) {
+      winner.innerHTML = winningPlayer;
+      endGame();
+      return decision;
+    }
+  });
 }
 
 quitElement.addEventListener("click", () => {
+  window.location.reload();
   winState.classList.remove("fullscreen");
   winStateMsg.classList.remove("fullscreen");
 });
