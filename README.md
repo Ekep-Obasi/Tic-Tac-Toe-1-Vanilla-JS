@@ -1,1 +1,1 @@
-## Tic-Tac-Toe Game with Vanilla Javascript
+# Tic-Tac-Toe Game with Vanilla Javascript
