@@ -9,18 +9,14 @@ function endGame() {
   winStateMsg.classList.add("fullscreen");
 }
 
-refreshButtonElement.addEventListener("click", refresh);
+refreshButtonElement.addEventListener("click", () => {
+  window.location.reload();
+});
 
 startButtonElement.addEventListener("click", () => {
   document.querySelector(".welcome").classList.add("start");
 });
 
-function refresh() {
-  window.location.reload();
-}
-
-const audioELement = document.querySelector(".audioControl");
-let clicked = true;
 audioELement.addEventListener("click", () => {
   clicked = !clicked;
   if (clicked) {

@@ -3,7 +3,6 @@ squareElement.forEach((square, idx) => {
     handleUserAction(square, idx);
     userMoves.push(idx);
     finalVerdict(userMoves, "O");
-    console.log("userMoves:", userMoves);
   });
 });
 
@@ -11,7 +10,7 @@ function handleUserAction(square, position) {
   getPosition(position);
   updateBoard(position, square);
 }
-3;
+
 function getPosition(idx) {
   return [Math.floor(idx / 3), idx % 3];
 }
@@ -27,7 +26,7 @@ function updateBoard(idx, square) {
 
 function getRandomPosition() {
   const [row, col] = getPosition(Math.floor(Math.random() * 9));
-
+ 
   if (board[row][col] !== null) {
     getRandomPosition();
     const totalMovesArr = board
@@ -51,7 +50,6 @@ function markRandomPosition(row, column) {
   const position = row * 3 + column;
   cpuMoves.push(position);
   finalVerdict(cpuMoves, "X");
-  console.log("cpuMoves:", cpuMoves);
 
   board[row][column] = 1;
 
@@ -70,5 +68,3 @@ function finalVerdict(moves, winningPlayer) {
     }
   });
 }
-
-

@@ -1,4 +1,6 @@
 const squareElement = document.querySelectorAll(".squares");
+const audioELement = document.querySelector(".audioControl");
+let clicked = true;
 const quitElement = document.querySelector(".quit");
 const winState = document.querySelector(".winstate");
 const winStateMsg = document.getElementById("msg");
